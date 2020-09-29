@@ -1,64 +1,56 @@
 # **Lane-Detection**
-**Objective:** In this project, we'll be detecting lane lines in videos and images of roads using the Computer Vision. Following lane lines is one of the most important traffic rules, so detecting them is a significant task while building models for autonomous(self-driving) vehicles.
-## Requirements:
-Python version 3.7.0 <br>
-opencv-python==4.4.0.42 <br>
-numpy==1.19.2 <br>
-matplotlib==3.3.2 <br>
+Lane detection is a critical component of self-driving cars and autonomous vehicles.With it the vehicle will know where to go and avoid the risk of running into other lanes or getting off the road. This can prevent the driver/car system from drifting off the driving lane.
+## Dependencies:
+Python version 3.7 <br>
+opencv-python <br>
+numpy <br>
+matplotlib <br>
 
-## Concepts Applied
-From various techniques that can be used to detect lines, we went with Canny Edge detection algorithm and Hough Transform method. 
-This is our original image:
+## Getting Started
+Using Canny Edge detection algorithm and Hough Transform method
+This is our image:
 <p align="center">
-<img src = "https://github.com/sampadabareja/Lane-Detection/blob/master/Images/test_image.jpg" width="400" height="250">
+<img src = "https://github.com/anushkagarg5653/Lane-Detection/blob/master/Images/test_image.jpg" width="500" height="300">
 </p>
-There are some pre-processing required to be done on the video/image, but the Canny edge function does that for you. They are:
-
 
 ### 1. Grayscaling
-It is the process of converting the images from RGB,HSV etc. to shades of grey. This process helps in increasing the contrast of the lanes, to be able to distinguish them from the rest of the image. The shades vary from pitch black to some whitish-grey, depending upon the wavelength of the original color.
-The resultant image will look like this:
+Grayscale is a range of shades of gray without apparent color. The darkest possible shade is black, which is the total absence of transmitted or reflected light. The lightest possible shade is white, the total transmission or reflection of light at all visible wavelength. This process helps in increasing the contrast of the lanes, to be able to distinguish them from the rest of the image.
+Image after applying grayscale
 <p align="center">
-<img src = "https://github.com/sampadabareja/Lane-Detection/blob/master/Result%20Images/Grayscaling.jpeg" width="400" height="250">
+<img src = "https://github.com/anushkagarg5653/Lane-Detection/blob/master/Images/GrayScale.JPG" width="500" height="300">
 </p>
 
-### 2. Gaussian Blur Filter
-The Gaussian blur function is applied on the grayscaled image. Its purpose is to reduce noise and irrelevant details in the image, which may hinder the process of Canny edge function.
-This is what you'll get after applying the Gaussian blur:
+### 2. Gaussian Blur
+The Gaussian blur function is applied on the grayscaled image. It is a widely used effect in graphics software, typically to reduce image noise and reduce detail.
+Image after applying Gaussian blur
 <p align="center">
-<img src = "https://github.com/sampadabareja/Lane-Detection/blob/master/Result%20Images/GaussianBlur.jpeg" width="400" height="250">
+<img src = "https://github.com/anushkagarg5653/Lane-Detection/blob/master/Images/blur.JPG" width="500" height="300">
 </p>
 
 ###  Canny Edge Function
-This function actually detects the edges in the road image/video. After increasing contrast by grayscaling and suppressing noise by Gaussian blur, the lines are detected by change in gradient. It calculates the gradient all over the frame and then represents the strong gradient as one white line. We set the high and low threshold for eliminating and including the required gradients.
-The image will look like this:
+Canny edge detection is a multi-step algorithm that can detect edges with noise supressed at the same time. Smooth the image with a Gaussian filter to reduce noise and unwanted details and textures.
+
 <p align="center">
-<img src = "https://github.com/sampadabareja/Lane-Detection/blob/master/Result%20Images/CannyEdgeDetection.jpeg" width="400" height="250">
+<img src = "https://github.com/anushkagarg5653/Lane-Detection/blob/master/Images/Canny.JPG" width="500" height="300">
 </p>
 
 ###  Hough Transform
-The final and significant method that allows us to work only with the region of our interest(which we define using a function, and tracing it on black pixel). After tracing the region of interest we'll get the following image:
+The Hough transform is a feature extraction technique used in image computer vision. The purpose is to find imperfect instances of objects within a certain class of shapes by a voting procedure.
 <p align="center">
-<img src = "https://github.com/sampadabareja/Lane-Detection/blob/master/Result%20Images/FilteredCannyImage.jpeg" width="400" height="250">
-</p>
-The Hough Transform algorithm maps a line(in x-y plane) as a point(in Hough space) and and a single point(in x-y plane) as a family of lines(in Hough Space).
-(For deeper understnding behind the Hough Algorithm, check out - https://towardsdatascience.com/lines-detection-with-hough-transform-84020b3b1549) 
-Thus, Hough transform returns us the lines having consistently aligned points, that are edges of our defined region of interest. It also detects curves, circles, etc, based on the same logic. 
+<img src = "https://github.com/anushkagarg5653/Lane-Detection/blob/master/Images/Cropped.JPG" width="500" height="300">
+</p> 
 
 
 After applying all the above concept, we finally get our required edges of lane lines traced on black pixels, which we then merge with our original image by weighted additions, and voila! we have detected the lane lines.
 Our final merged image, indicating lane lines will look like this:
 <p align="center">
-<img src = "https://github.com/sampadabareja/Lane-Detection/blob/master/Result%20Images/Finalimage.jpeg" width="400" height="350">
+<img src = "https://github.com/sampadabareja/Lane-Detection/blob/master/Result%20Images/Finalimage.jpeg" width="500" height="300">
 </p>
 <p align="center">
 </p>
 <p align="center">
-<img src = "https://github.com/Data-Science-Community-SRM/template/blob/master/logo-light.png?raw=true"  height="120" alt="Your Name Here (Insert Your Image Link In Src">
-</p>
-<p align="center">
-<a href = ""><img src = "http://www.iconninja.com/files/241/825/211/round-collaboration-social-github-code-circle-network-icon.svg" width="36" height = "36"/></a>
-
+<a href = "https://github.com/anushkagarg5653"><img src = "http://www.iconninja.com/files/241/825/211/round-collaboration-social-github-code-circle-network-icon.svg" width="36" height = "36"/></a>
+<a href = "https://www.linkedin.com/in/anushka-garg-b6759318a/">
 <img src = "http://www.iconninja.com/files/863/607/751/network-linkedin-social-connection-circular-circle-media-icon.svg" width="36" height="36"/>
 </a>
 </p>
